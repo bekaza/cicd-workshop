@@ -18,7 +18,8 @@ func main() {
 
 	e.GET("/", func(c echo.Context) error {
 		env := os.Getenv("TOKEN_SECRET")
-		return c.HTML(http.StatusOK, fmt.Sprintf("Hello, Docker! <3 : %v", env))
+		dbEnv := os.Getenv("DB_KEY")
+		return c.HTML(http.StatusOK, fmt.Sprintf("Hello, Docker! <3 : %v\nDB_KEY : %v", env, dbEnv))
 	})
 
 	e.GET("/ping", func(c echo.Context) error {
